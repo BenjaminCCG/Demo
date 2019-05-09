@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>   
+        div{
+            width: 400px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: rgb(254, 244, 235);
+            border: 1px solid #f60;
+        }
+        button{
+            margin: 10px 0 0 10px;
+            background-color: #f60;
+            color: white;
+            border:none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>   
+    <div>
+        <button>Get Style</button>
+        <button>Set Style</button>
+        <button>Default Style</button>
+    </div>
+    <script>       
+        let btn=document.getElementsByTagName('button')
+        let div=document.getElementsByTagName('div')[0]
+        // btn[0].addEventListener('click',function(){
+        //     window.getComputedStyle(div,null)['width']
+            
+        // })
+        function css(obj,attr,value){
+            switch(arguments.length){
+                case 2:
+                if(typeof arguments[1] =='object'){
+                        for(var i in attr){
+                            obj.style[i]=attr[i]
+                        }
+                }else{
+                    return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj,null)[attr]
+                }
+                break;
+                case 3:
+                obj.style[attr]=value;
+                break;
+                default:
+                console.log('参数错误');                
+            }
+        }
+
+        btn[0].addEventListener('click',function(){
+            alert('width:'+css(div,'width')+'\n'+'height:'+css(div,'height')+'\n'+'background-color:'+css(div,'backgroundColor'))
+        })
+
+        btn[1].addEventListener('click',function(){
+            css(div,{width:'330px',height:'100px',background:'rgb(239,248,255)',borderColor:'rgb(0, 132, 255)'})
+            for(var i=0;i<btn.length;i++){
+                css(btn[i],'background','rgb(0, 132, 255)')
+            }
+        })
+
+        btn[2].addEventListener('click',function(){
+            css(div,{width:'400px',height:'200px',background:'rgb(254, 244, 235)',borderColor:'#f60'})
+            for(var i=0;i<btn.length;i++){
+                css(btn[i],'background','#f60')
+            }
+        })
+
+    </script>
+</body>
+</html>

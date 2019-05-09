@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 230px;
+            /* margin: 5px 0; */
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 2px 2px 3px #ccc;
+            float: left;
+         
+        }
+        .box-img img{
+            width: 230px;
+        }
+
+        .active{
+            opacity: 0;
+            transform: scale(0,0);
+            transition: all 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="box">
+            <div class="box-img">
+                <img src="images/0.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="images/1.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="images/2.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="images/3.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="images/4.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="images/5.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+                <div class="box-img">
+                    <img src="images/0.jpg" alt="">
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="images/1.jpg" alt="">
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="images/2.jpg" alt="">
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="images/3.jpg" alt="">
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="images/4.jpg" alt="">
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="images/5.jpg" alt="">
+                </div>
+            </div>
+            <div class="box">
+                    <div class="box-img">
+                        <img src="images/0.jpg" alt="">
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-img">
+                        <img src="images/1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-img">
+                        <img src="images/2.jpg" alt="">
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-img">
+                        <img src="images/3.jpg" alt="">
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-img">
+                        <img src="images/4.jpg" alt="">
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-img">
+                        <img src="images/5.jpg" alt="">
+                    </div>
+                </div>
+    </div>
+
+    <script>
+
+        // var arr=[8,4,6,9]
+        // console.log(arr.indexOf(8));
+        const oParent=document.getElementById('container')
+        window.addEventListener('load',function(){
+//             通过.offsetHeight获取的高度与实际高度不一致
+//             原因在于left的div里有img
+//             必须等到页面加载完毕之后才能正确获取content的高度
+//             所以在onload 的方法里获取content高度才是实际的高度
+            imgLocation('box')
+            window.addEventListener('scroll',function(){
+                var str=''
+                if(checkLoading('box')){
+                      for(var i=0;i<30;i++){
+                        str+=`<div class="box">
+                                <div class="box-img">
+                                 <img src="images/${i}.jpg" alt="" class="active">
+                                </div>
+                               </div>`
+                        
+                        
+                      } 
+                      oParent.innerHTML+=str
+                      imgLocation('box')
+            }
+            })
+        })
+        /*
+            瀑布流实现思路
+                1.布局
+                    1.1 实现图片列数和浏览器挂钩
+                        内容显示区宽度 / 盛放图片容器宽度
+                    1.2 让图片居中
+                        margin
+                2.根据每一列的最小高度来计算
+                    (哪一列高度最小，把要加载的数据放在最小那一列高度的下面)
+                    2.1 计算图片的最小高度
+                        第一行元素是不需要做高度计算的
+                3.判断滚动条滚动到底部怎么加载
+                    滚动高度+页面高度>加载最后一张图片距离浏览器顶部高度
+                
+        */
+       
+        const checkLoading=(child)=>{
+            const aContent=getChilds(child);
+            const lastTop=aContent[aContent.length-1].offsetTop;
+            const scrollTop=document.documentElement.scrollTop||document.body.scrollTop
+            const pageHeight=document.documentElement.clientHeight||document.body.clientHeight
+            if(scrollTop+pageHeight>lastTop){
+                return true
+            }
+        }
+
+        const imgLocation=(child)=>{
+            const aContent=getChilds(child)
+            const imgWidth=aContent[0].offsetWidth
+            const num= Math.floor(document.documentElement.clientWidth/imgWidth)
+            // console.log(aContent[0].offsetHeight);
+            oParent.style.cssText=`width:${num*imgWidth}px;margin:0 auto;`;
+            //计算图片的高度
+            const heightArr=[];
+            [].map.call(aContent,(current,index)=>{
+                if(index<num){
+                    heightArr.push(current.offsetHeight)
+                }else{
+                    //得到图片的最小高度
+                    // const minHeight=Math.min.apply(null,heightArr)
+                    const minHeight=Math.min(...heightArr)
+                    //得到最小高度的下标
+                    const minIndex=heightArr.indexOf(minHeight) 
+                    console.log(minHeight,minIndex);
+                    current.style.position='absolute';
+                    current.style.top=minHeight+'px'
+                    current.style.left=aContent[minIndex].offsetLeft+'px'
+                    // console.log(minIndex);
+                    heightArr[minIndex]=current.offsetHeight+heightArr[minIndex]
+                }
+            })
+            
+            
+            
+        }
+
+
+
+
+
+        //将父级下所有符合条件的子元素全部取出
+        const getChilds=(child)=>{
+            const tagsAll=oParent.getElementsByTagName('*');
+            const childArr=[];
+            [].map.call(tagsAll,current=>{
+                if(current.className==child){
+                    childArr.push(current)
+                }
+            })
+            return childArr
+        }
+        // function getMin(arr){
+        //     var arrLength=arr.length;
+        //     for(var i=0,ret=arr[0];i<arrLength;i++){
+        //         ret=Math.min(ret,arr[i])
+        //     }
+        //     return ret
+        // }
+
+        function getMinIndex(minHeight,heightArr){
+            // for(var i in heightArr){
+            //     if(heightArr[i]==minHeight){
+            //         return  i
+            //     }
+            // }
+
+        }
+    </script>
+</body>
+</html>

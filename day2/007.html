@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>      
+      .outer{
+          width: 120px;
+          border: 1px solid black;
+          border-radius: 5px;
+          background-color: #fafafa;
+          margin: 0 auto;
+          padding: 10px;
+      }
+      ul{
+          margin: 0;
+          padding: 0;
+          list-style: none;
+      }
+      .title{
+          border-bottom: 1px solid black;
+          padding: 10px 0;
+      }
+      ul li{
+          padding: 5px 0;
+      }
+      i{
+          font-style: normal;
+      }
+    </style>
+</head>
+<body>   
+   <div class="outer">
+      <div class="title">
+            <input type="checkbox" class="all"><i>全选</i>
+            <a href="#">反选</a>
+      </div>
+      <ul>
+          <li><input type="checkbox">选项(一)</li>
+          <li><input type="checkbox">选项(二)</li>
+          <li><input type="checkbox">选项(三)</li>
+          <li><input type="checkbox">选项(四)</li>
+          <li><input type="checkbox">选项(五)</li>
+          <li><input type="checkbox">选项(六)</li>
+          <li><input type="checkbox">选项(七)</li>
+          <li><input type="checkbox">选项(八)</li>
+          <li><input type="checkbox">选项(九)</li>
+          <li><input type="checkbox">选项(十)</li>
+      </ul>
+   </div>
+    <script>
+        let ul=document.getElementsByTagName('ul')[0]
+        let ii=document.getElementsByTagName('i')[0]
+        let a=document.getElementsByTagName('a')[0]
+        let inputs=ul.getElementsByTagName('input')
+        let all=document.getElementsByClassName('all')[0]
+        // console.log(inputs[0].checked);
+        console.log(all);
+        let bool=true;
+        all.addEventListener('click',function(){            
+            if(bool){
+                for(var i=0;i<inputs.length;i++){
+                inputs[i].checked=true
+            }
+            ii.innerText='全不选'
+            bool=false
+            }else{
+                for(var i=0;i<inputs.length;i++){
+                inputs[i].checked=false
+            }
+            ii.innerText='全选'
+            bool=true
+            }
+           
+        })
+        console.log(all);
+        a.addEventListener('click',function(){
+            for(let k=0;k<inputs.length;k++){
+                inputs[k].checked=!(inputs[k].checked)                
+                // console.log(!(inputs[k].checked));
+                // console.log(all);                
+            }
+            all.checked=!all.checked;
+            let bol=[].every.call(inputs,item=>{
+                    return   item.checked==true
+                })
+            if(!bol){
+                all.checked=false;
+                ii.innerText='全不选'
+                bool=false
+            }
+        })
+        
+
+          for(var j=0;j<inputs.length;j++){
+            
+            inputs[j].addEventListener('click',function(){
+                let bol=[].every.call(inputs,item=>{
+                    return   item.checked==true
+                })
+                // console.log(bol);
+                
+                if(bol){
+                all.checked=true;
+                ii.innerText='全不选'
+                }
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <title>Document</title>
+    <style>
+       div{
+           width: 400px;
+           margin: 0 auto;
+           /* text-align: center; */
+       }
+       p{
+           width: 398px;
+           border: 1px solid red;
+           background: pink;
+           display: none;
+       }
+    </style>
+</head>
+<body>
+        <div>
+            <label><input type="checkbox">两周内自动登录</label>
+            <p>为了您的信息安全，请不要在网吧或者公共网络使用此功能</p>
+        </div>
+    <script>
+       $('label').hover(function(){
+           $('p').css('display','block')
+       },function(){
+        $('p').css('display','none')
+       })
+    </script>
+</body>
+</html>

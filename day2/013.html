@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>      
+        .outer{
+            width: 300px;
+            height: 142px;
+            text-align: center;
+            margin: 0 auto;
+            background-color: black;
+            color: white;
+            box-sizing: border-box;
+            padding-top: 20px;
+        }
+        input{
+            width: 30px;
+        }
+        button{
+            width: 280px;
+            height:50px;
+            background-color: lightgreen;
+            color: white;
+            margin-top: 30px;
+            font-size: 20px
+
+        }
+    </style>
+</head>
+<body>   
+    <div class="outer">
+        <div class="time">
+            <input type="text" value="01" readonly>分钟
+            <input type="text" value="05" readonly>秒
+        </div>
+        <button>启动</button>
+    </div>
+    <script>
+        let in1=document.getElementsByTagName('input')[0]
+        let in2=document.getElementsByTagName('input')[1]
+        let btn=document.getElementsByTagName('button')[0]
+        let bool=true;
+        let timer=null;
+        btn.addEventListener('click',function(){
+            if(bool){
+                this.style.background='red';
+                this.innerText='取消'
+                timer=setInterval(function(){
+                var val1=parseInt(in1.value)
+                var val2=parseInt(in2.value)            
+                in2.value=val2-1;
+                in2.value=in2.value.padStart(2,'0')
+                if(in2.value<0){
+                    in1.value=00
+                    in1.value=in1.value.padStart(2,'0')
+                    in2.value=59                   
+                }
+                if(in1.value=='00'&&in2.value=='00'){
+                        clearInterval(timer)
+                    }                
+                
+            },1000)
+            bool=false
+            }else{
+                clearInterval(timer)
+                this.style.background='lightgreen';
+                this.innerText='启动'
+                bool=true
+            }
+        })
+    </script>
+</body>
+</html>

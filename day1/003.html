@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <title>Document</title>
+    <style>
+        div{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>
+            <input type="text" value="北京市">
+        </p>
+        <p>
+            <input type="text" value="朝阳区">
+        </p>
+        <button>传参</button>
+    </div>
+    <script>
+    //   $('button').click(function(){
+    //       alert($('p:first-of-type>input').val())
+    //       alert($('p:last-of-type>input').val())
+    //   })
+    function ale(val1,val2){
+        alert(val1);
+        alert(val2)
+    }
+
+    $('button').click(function(){
+        ale($('p:first-of-type>input').val(),$('p:last-of-type>input').val())
+    })
+    </script>
+</body>
+</html>

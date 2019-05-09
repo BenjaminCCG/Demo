@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>      
+       body{
+           box-sizing: border-box;
+       }
+       .outer{
+           width: 570px;
+           margin: 0 auto;
+           border: 1px solid black;
+           text-align: center;
+           /* overflow: hidden; */
+           padding-bottom: 10px;
+       }
+       .inner{
+           padding-left: 10px;
+       }
+       .list {
+           float: left;
+           width: 100px;
+           height: 100px;
+           margin: 10px 10px 0 0;
+           border: 1px solid black;
+           position: relative;
+           font-size: 14px;
+       }
+       a{
+           position: absolute;
+           left: 0;
+           top: 0;
+           width: 100px;
+           height: 100px;
+           border: 2px solid #ccc;
+           background: url(http://www.fgm.cc/learn/lesson2/img/10.jpg) white  no-repeat center center;
+           background-size: 100px;
+           display: none;
+           z-index: 99;
+       }
+       .clearfix::after{
+           content: '';
+           display: block;
+           clear: both;
+       }
+    </style>
+</head>
+<body>
+    <div class="outer clearfix">
+        <h2>名车车标展示-鼠标移过显示车标</h2>
+        <div class="inner">
+            <div class="list">
+                <p><strong>BMW</strong><br>宝马汽车</p>
+                <a></a>
+            </div>
+            <div class="list">
+                <p><strong>Aifa Romeo</strong><br>阿尔法-罗米欧</p>
+                <a></a>
+            </div>
+            <div class="list">
+                <p><strong>Skoda</strong><br>斯柯达</p>
+                <a></a>
+            </div>
+            <div class="list">
+                <p><strong>Volkswagen</strong><br>大众汽车</p>
+                <a></a>
+            </div>
+            <div class="list">
+                <p><strong>Saab</strong><br>萨布牌轿车</p>
+                <a></a>
+            </div>
+            <div class="list">
+                <p><strong>Lamborghini</strong><br>兰博基尼</p>
+                <a></a>
+            </div>
+            <div class="list">
+                <p><strong>Porsche</strong><br>保时捷</p>
+                <a></a>
+            </div>
+            <div class="list">
+                <p><strong>Peugeot</strong><br>标志</p>
+                <a></a>
+            </div>
+            <div class="list">
+                <p><strong>Mercedes1</strong><br>梅赛德斯奔驰</p>
+                <a></a>
+            </div>
+            <div class="list">
+                <p><strong>Buick</strong><br>别克汽车</p>
+                <a></a>
+            </div>
+        </div>
+    </div>
+    <script>
+        let list=document.getElementsByClassName('list')
+        let aList=document.getElementsByTagName('a')
+        for(let i=0;i<list.length;i++){
+            list[i].addEventListener('mouseover',function(){
+                aList[i].style.display='block';
+                aList[i].style.transform='scale(1.4)'
+            })
+            list[i].addEventListener('mouseout',function(){
+                aList[i].style.display='none';
+                // aList[i].style.transform='scale(1.4)'
+            })
+        }
+    </script>
+</body>
+</html>

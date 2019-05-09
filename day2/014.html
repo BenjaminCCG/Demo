@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>   
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }   
+        .outer{
+            width: 490px;
+            height: 170px;
+            border-radius: 5px;
+            margin: 0 auto;
+            position: relative;
+            padding: 10px;
+            background-color: #fff;
+        }
+        .list{
+            width: 490px;
+            height: 170px;
+            /* overflow: hidden; */
+        }
+        img{
+            width: 490px;
+            height: 170px;
+            position: absolute;
+            /* opacity: 0; */
+            transition: all 1.5s ease
+            /* display: none; */
+        }
+       span{
+           display: inline-block;
+           width:20px;
+           height: 20px;
+           border-radius: 50%; 
+           background-color: orangered;
+           color: white;
+           font-size: 14px;
+           text-align: center;
+           opacity: 0.4;
+       }
+       .btn{
+           position: absolute;
+           right: 10px;
+           bottom: 10px;
+       }
+    </style>
+</head>
+<body>   
+   <div class="outer">
+       <div class="list">
+            <img src="http://www.fgm.cc/learn/lesson4/img/01.jpg">
+            <img src="http://www.fgm.cc/learn/lesson4/img/02.jpg">
+            <img src="http://www.fgm.cc/learn/lesson4/img/03.jpg">
+            <img src="http://www.fgm.cc/learn/lesson4/img/04.jpg">
+            <img src="http://www.fgm.cc/learn/lesson4/img/05.jpg">
+       </div>
+       <div class="btn">
+           <span>1</span>
+           <span>2</span>
+           <span>3</span>
+           <span>4</span>
+           <span>5</span>
+       </div>
+   </div>
+    <script> 
+        let img=document.getElementsByTagName('img');
+        let span=document.getElementsByTagName('span')
+        let list=document.getElementsByClassName('list')[0]
+        let outer=document.getElementsByClassName('outer')[0]
+        let index=0; 
+        let timer=null
+        function changeImg(){
+            for(var i=0;i<img.length;i++){
+                // img[i].style.display='none';
+                img[i].style.opacity='0';
+                span[i].style.opacity='0.4'
+            }
+            img[index].style.opacity='1';
+            // img[index].style.display='block';
+            span[index].style.opacity='1'
+        }
+       function autoPlay(){
+            timer=setInterval(function(){
+                index++
+            if(index>4){
+                index=0
+            }
+            changeImg()
+            },2500)
+       }
+       autoPlay()
+       function clear(){
+           if(timer){
+               clearInterval(timer)
+           }
+       }
+       outer.addEventListener('mouseenter',function(){
+            clear()
+        })
+        outer.addEventListener('mouseleave',function(){
+           autoPlay()
+        })
+        for(let i=0;i<span.length;i++){
+            span[i].addEventListener('mouseover',function(){
+                index=i;
+                changeImg()
+            })
+        }
+    </script>
+</body>
+</html>

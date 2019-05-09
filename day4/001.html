@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .outer{
+            width: 300px;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            /* transform: translate(-50%,-50%); */
+            border:2px solid #ccc;
+            font-size: 14px;
+            color: white;
+        }
+        .head{
+            padding: 3px 6px;
+            border-bottom: 2px solid #ccc;
+            text-align: right;
+            background-color: #222;
+            cursor: move;
+        }
+        .head>span{
+            cursor: pointer;
+        }
+        .content{
+            background-color: #333;
+            padding: 10px 5px;
+        }
+        li{
+            padding: 10px 10px;
+        }
+        li>span{
+            font-size: 12px;
+            color: #ff0;
+            padding-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="head"><span>点击回放拖动轨迹</span></div>
+        <div class="content">
+            <ul>
+                <li>Drag:<span></span></li>
+                <li>offsetTop:<span></span></li>
+                <li>offsetLeft:<span></span></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        let span=document.getElementsByTagName('span');
+        let bool=false;
+        let head=document.getElementsByClassName('head')[0]
+        let outer=document.getElementsByClassName('outer')[0]
+        span[1].innerText=bool;
+        span[2].innerText=outer.offsetTop
+        span[3].innerText=outer.offsetLeft
+        document.documentElement.addEventListener('click',function(e){
+            console.log(e.clientX);
+        })
+        head.addEventListener('mousedown',function(e){
+            bool=true;
+            span[1].innerText=bool;
+            
+            
+            outer.onmousemove=function(e){
+                outer.style.left=e.clientX+'px'
+                outer.style.top=e.clientY+'px'
+            }            
+        })
+        head.addEventListener('mouseup',function(){
+            head.onmousemove=null
+        })
+    </script>
+</body>
+</html>

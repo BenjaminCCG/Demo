@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <title>Document</title>
+    <style>
+      div{
+          width: 500px;
+          margin: 0 auto;
+      }
+      i{
+          font-size: 14px;
+          color: #ccc;
+          font-style: normal;
+      }
+      input{
+          width: 220px;
+      }
+      span{
+          font-size: 22px;
+          font-weight: bold;
+          color: red;
+      }
+    </style>
+</head>
+<body>    
+    <div>
+        <p>
+            <input type="text" value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"> <i>输入数字求和,数字之间用半角","号分隔</i>
+        </p>
+        <p>
+            <button>求和</button>
+        </p>
+        <span></span>
+    </div>
+    <script>        
+        
+        $('button').click(function(){
+            let arr=$('input').val().split(',')
+        
+            let numArr=arr.map(item=>{
+            return parseInt(item)
+            })
+            let res=numArr.reduce((prev,next)=>{
+             return  prev=prev+next
+            },0)
+            $('span').text(res)
+        })
+        $('input').keyup(function(){
+            $(this).val($(this).val().replace(/[^(\d)|(,)]/,''))
+           
+        })
+
+        
+        
+
+    </script>
+</body>
+</html>

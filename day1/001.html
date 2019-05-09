@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <title>Document</title>
+    <style>
+        .outdiv{
+            width: 500px;
+            margin: 0 auto;
+            text-align: center
+        }
+        .innerdiv{
+            width:50px;
+            height: 50px;
+            background-color: black;
+            margin: 10px auto;
+        }
+        .width{
+            width: 100px;
+        }
+        .height{
+            height: 100px;
+        }
+        .color{
+            background-color: red;
+        }
+        .display{
+            display: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="outdiv">
+        <button>变宽</button>
+        <button>变高</button>
+        <button>变色</button>
+        <button>隐藏</button>
+        <button>重置</button>
+        <div class="innerdiv"></div>
+    </div>
+    <script>
+        // $('button:first-of-type').click(function(){
+        //     $('.innerdiv').addClass('width')
+        //     console.log($('.innerdiv'));            
+        // })
+        // $('button:nth-of-type(2)').click(function(){
+        //     $('.innerdiv').addClass('height')
+        // })
+        // $('button:nth-of-type(3)').click(function(){
+        //     $('.innerdiv').addClass('color')
+        // })
+        // $('button:nth-of-type(4)').click(function(){
+        //     $('.innerdiv').addClass('display')
+        // })
+        // $('button:nth-of-type(5)').click(function(){
+        //     $('.innerdiv').removeClass('display width height color')
+        // })
+
+        let keyArr=['width','height','backgroundColor','display']
+        let valArr=['100px','100px','red','none']
+        for(let i=0;i<$('button').length;i++){
+            if(i==$('button').length-1){
+                $('button').eq(i).click(function(){
+                    $('.innerdiv').css({
+                    'width':'50px',
+                    'height':'50px',
+                    'backgroundColor':'black',
+                    'display':'block'
+                })
+                })
+            }
+            $('button').eq(i).click(function(){
+                setStyle(keyArr[i],valArr[i])
+            })
+        }
+        function setStyle(style,value){
+            $('.innerdiv').css(style,value)
+        }
+    </script>
+</body>
+</html>

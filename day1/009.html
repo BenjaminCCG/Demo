@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <title>Document</title>
+    <style>
+        body{
+            margin:0;
+            padding: 0;
+        }
+        .out{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0.2;
+            display: none;
+        }
+        .inner{
+            width: 400px;
+            height: 200px;
+            border: 2px solid orange;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -200px;
+            margin-top: -100px;
+            z-index: 999;
+            background-color:#fff;
+            display: none;
+        }
+        .inner>p{
+            height: 23px;
+            padding: 7px;
+            background-color: #FC0;
+            text-align: right;
+            margin: 0;
+            border-bottom:  2px solid orange
+        }
+        p>span{
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            border: 1px solid #f90;
+            background-color: white;
+            text-align: center;
+            color: #f90;
+            cursor: pointer;
+        }
+       body{
+           text-align: center;
+       }
+    </style>
+</head>
+<body>    
+    <button>弹出层</button>
+    <div class="out"></div>
+        <div class="inner">
+            <p><span>x</span></p>
+            <div class="inner-content"></div>
+        </div>
+    
+    <script>       
+       $('button').click(function(){
+           $('.out,.inner').css('display','block')
+       })
+       $('span').click(function(){
+        $('.out,.inner').css('display','none')
+       })
+    </script>
+</body>
+</html>

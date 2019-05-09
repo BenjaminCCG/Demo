@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>      
+       body{
+           box-sizing: border-box;
+           margin: 0;
+           padding: 0;
+           background-color: black;
+       }
+       div{
+           width: 222px;
+           height: 275px;
+           margin: 0 auto;
+           border-radius: 5px;
+           background-color: white;
+           padding: 8px;
+           padding-right: 0;
+       }
+       ul{
+           margin: 0;
+           padding: 0;
+           list-style: none;
+       }
+       ul>li{
+           float: left;
+           width: 50px;
+           height: 50px;
+           margin: 3px 3px 0 0;
+       }
+       .first{
+           width: 156px;
+           height: 156px;
+       }
+       .first img{
+           width:100%;
+           cursor: default 
+       }
+       img{
+           cursor: pointer;
+       }
+    </style>
+</head>
+<body>   
+   <div>
+       <ul>
+           <li class="first"><img src="http://www.fgm.cc/learn/lesson2/img/big_1.jpg" alt=""></li>
+           <li><img src="http://www.fgm.cc/learn/lesson2/img/small_1.jpg" alt=""></li>
+           <li><img src="http://www.fgm.cc/learn/lesson2/img/small_2.jpg" alt=""></li>
+           <li><img src="http://www.fgm.cc/learn/lesson2/img/small_3.jpg" alt=""></li>
+           <li><img src="http://www.fgm.cc/learn/lesson2/img/small_4.jpg" alt=""></li>
+           <li><img src="http://www.fgm.cc/learn/lesson2/img/small_5.jpg" alt=""></li>
+           <li><img src="http://www.fgm.cc/learn/lesson2/img/small_6.jpg" alt=""></li>
+           <li><img src="http://www.fgm.cc/learn/lesson2/img/small_7.jpg" alt=""></li>
+           <li><img src="http://www.fgm.cc/learn/lesson2/img/small_8.jpg" alt=""></li>
+           <li><img src="http://www.fgm.cc/learn/lesson2/img/small_9.jpg" alt=""></li>
+           <li><img src="http://www.fgm.cc/learn/lesson2/img/small_10.jpg" alt=""></li>
+           <li><img src="http://www.fgm.cc/learn/lesson2/img/small_11.jpg" alt=""></li>
+       </ul>
+   </div>
+    <script>
+        let imgs=document.getElementsByTagName('img')
+        let first=document.getElementsByClassName('first')[0]
+        let firstImg=first.getElementsByTagName('img')[0]
+        for(let i=0;i<imgs.length;i++){
+            imgs[i].addEventListener('mouseover',function(){
+                firstImg.src=this.src.replace(/small/,'big')
+                // alert(1)
+            })
+        }
+
+    </script>
+</body>
+</html>

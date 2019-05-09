@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       div{
+           display: ta
+       }
+    </style>
+</head>
+<body>
+    行 <input type="text">
+    列 <input type="text">
+    <input type="button" value="生成表格">
+    <table></table>
+    <script>
+       let inp=document.getElementsByTagName('input')
+       let tab=document.getElementsByTagName('table')[0]
+       inp[2].addEventListener('click',function(){
+           let val1=inp[0].value
+           let val2=inp[1].value
+           tab.innerHTML='<tbody>'
+           for(var i=0;i<val1;i++){
+            tab.innerHTML+='<tr>'
+               for(var j=0;j<val2;j++){
+                tab.innerHTML+='<td>'+j+'</td>'
+               }
+               tab.innerHTML+='</tr>'
+           }
+           tab.innerHTML+='</tbody>'
+       })
+    </script>
+</body>
+</html>

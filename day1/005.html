@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <title>Document</title>
+    <style>
+       div{
+         width: 200px;
+         height: 200px;
+         margin: 0 auto;
+         border: 10px solid black;
+         padding: 5px;
+         background: black;
+         color: white;
+       }
+       .hover{
+         border: 10px solid red;
+         cursor: crosshair;
+         background: #ccc;
+         color: red; 
+       }
+    </style>
+</head>
+<body>
+        <div>
+            鼠标移入改变样式，鼠标移出恢复
+        </div>
+    <script>
+        $('div').hover(function(){
+            $(this).addClass('hover')
+        },function(){
+            $(this).removeClass('hover')
+        })
+    </script>
+</body>
+</html>

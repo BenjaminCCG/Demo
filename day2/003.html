@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>      
+        .outer{
+            width: 260px;
+            /* height: 275px; */
+            margin: 0 auto;
+            background-color: #eaeaea;
+            padding-bottom: 10px;
+        }
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul>li{
+            float: left;
+            width: 45px;
+            height: 45px;
+            text-align: center;
+            background-color: #424242;
+            color: white;
+            margin: 9px;
+            font-size: 14px;
+            line-height: 1.6em;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        .clearfix::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .inner{
+            width: 240px;
+            margin: 0 auto;;
+            /* height: 60px; */
+            border: 1px solid white;
+            background-color: #f1f1f1;
+            line-height: 1.8em;
+        }
+        h4{
+            margin: 0;
+        }
+        p{
+            margin: 0
+        }
+        i{
+            font-style: normal;
+        }
+        .active{
+            background-color: white;
+            color: #F69;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <ul class="clearfix">
+            <li>1<br>JAN</li>
+            <li>2<br>FER</li>
+            <li>3<br>MAR</li>
+            <li>4<br>APR</li>
+            <li>5<br>MAY</li>
+            <li class="active">6<br>JUN</li>
+            <li>7<br>JUL</li>
+            <li>8<br>AUG</li>
+            <li>9<br>SEP</li>
+            <li>10<br>OCT</li>
+            <li>11<br>NOV</li>
+            <li>12<br>DEC</li>
+        </ul>
+        <div class="inner">
+            <h4><i>6</i>月节日</h2>
+            <p>端午节:6月4日至6日放假3天。</p>            
+        </div>
+    </div>
+    <script>
+        let num=[1,2,3,4,5,6,7,8,9,10,11,12]
+        let str=[
+            '元旦:1月1日至3日放假三天',
+            '春节:2月2日至8日放假7天',
+            '妇女节:3月8日妇女节，与我无关',
+            '清明节:4月3日至5日放假3天',
+            '劳动节:4月30日至5月2日放假3天',
+            '端午节:6月4日至6日放假3天',
+            '小暑:7月7日小暑，不放假',
+            '七夕节:8月6日七夕节，不放假',
+            '中秋节:9月10日至12日放假3天',
+            '国庆节:10月1日至7日放假7天',
+            '立冬:11月8日立冬，不放假',
+            '艾滋病日:12月1日'+'\n'+'废除奴隶制国际日:12月2日'
+        ]
+        // console.log(str[11]);
+        let list=document.getElementsByTagName('li');
+        let ii=document.getElementsByTagName('i')[0];
+        let p=document.getElementsByTagName('p')[0];
+        for(var i=0;i<list.length;i++){
+            list[i].index=i;
+            list[i].addEventListener('mouseover',function(){
+                for(var j=0;j<list.length;j++){
+                    list[j].className=''
+                }
+                list[this.index].className='active';
+                ii.innerText=num[this.index]
+                p.innerText=str[this.index]
+            })
+        }
+    </script>
+</body>
+</html>

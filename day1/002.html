@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <title>Document</title>
+    <style>
+       body{
+           background-color:#A3C5A8 
+       }
+        .outer{
+            width: 500px;
+            margin: 10px auto;
+        }
+        .btn{
+            float: left;
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            position: relative;
+            cursor: pointer;
+        }
+        .red{
+            background-color: red;            
+        }
+        .green{
+            background-color: green;            
+        }
+        .black{
+            background-color: black;            
+        }
+        ul{
+            margin: 10px 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            width: 500px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            border: 1px solid white;
+            background-color: green
+        }
+        ul>li{
+            border-right: 1px solid white;
+            flex: 1
+        }
+        ul a{
+            font-size: 14px;
+            color: white;
+            text-decoration: none;
+        }
+        ul>li:last-of-type{
+            border-right: none;
+        }
+        
+        .active::after{
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: 99;
+            width: 15px;
+            height: 15px;
+            left: 50%;
+            top: 50%;
+            margin-left: -7.5px;
+            margin-top: -7.5px;
+            background: white;
+        }
+        .clearfix::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="clearfix">
+            <div class="btn red"></div>
+            <div class="btn green active"></div>
+            <div class="btn black"></div>
+        </div>
+        <ul>
+            <li><a href="#1">新闻</a></li>
+            <li><a href="#1">娱乐</a></li>
+            <li><a href="#1">体育</a></li>
+            <li><a href="#1">电影</a></li>
+            <li><a href="#1">音乐</a></li>
+            <li><a href="#1">旅游</a></li>
+        </ul>
+    </div>
+    <script>
+        let colors=['red','green','black']
+        let bgcolors=['#FDD','#A3C5A8','#ccc']
+        for(let i=0;i<colors.length;i++){
+            $('.btn').eq(i).click(function(){
+                setColor(colors[i],bgcolors[i])
+                $(this).addClass('active').siblings().removeClass('active')
+            })
+        }
+        function setColor(color,bgColor){
+            $('ul').css('background',color);
+            $('body').css('background',bgColor)
+        }
+    </script>
+</body>
+</html>

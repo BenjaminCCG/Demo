@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>      
+      
+    </style>
+</head>
+<body>   
+   <div>
+       <input type="text">
+       <button>是否为两位数</button>
+   </div>
+    <script>
+        var input=document.getElementsByTagName('input')[0];
+        var btn=document.getElementsByTagName('button')[0];
+        btn.addEventListener('click',function(){
+            var arr=[...input.value]
+            if(arr.length==2){
+                alert('√是两位数')
+            }else{
+                alert('这是'+arr.length+'位数')
+            }
+        })
+    </script>
+</body>
+</html>

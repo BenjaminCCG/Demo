@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <title>Document</title>
+    <style>
+        div{
+            width: 500px;
+            margin: 0 auto;
+            text-align: center
+        }
+        ul{
+            width: 500px;
+            margin: 10px 0;
+            padding: 0;
+        }
+        li{
+            margin: 0 8px;
+            padding: 0;
+            list-style: none;
+            float: left;
+            width: 150px;
+            height: 150px;         
+            background-color: black;
+
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button>点击将DIV变成红色</button>
+
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        $('button').click(function(){
+            $('li').css('backgroundColor','red')
+        })
+    </script>
+</body>
+</html>

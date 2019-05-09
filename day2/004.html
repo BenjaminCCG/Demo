@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>      
+       .outer{
+           width:200px;
+           margin: 0 auto;
+           /* padding: 10px; */
+           /* border:1px solid #ccc; */
+       }
+       .head{
+           background: #ced3d7;
+           padding: 10px;
+           border: 1px solid black;
+       }
+       i{
+           float:right;
+           border: 10px solid transparent;
+           border-top-color: black;
+           margin-top: 5px;
+           transform-origin: 10px 5px;
+       }
+       ul{
+           margin: 0;
+           padding:0 ;
+           list-style: none;
+           font-size: 12px;
+           background-color: #e9edf2;
+           border: 1px solid black;
+           border-top: none;
+       }
+       li{
+           height: 25px;
+           line-height: 25px;;
+           padding: 0 10px;
+           cursor: pointer;
+       }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="head">
+            <span>播放列表</span>
+            <i></i>
+        </div>
+        <ul>
+            <li>玩家之徒-蔡依林</li>
+            <li>原谅我就是这样的女生-戴佩妮</li>
+            <li>猜不透-丁当</li>
+            <li>自导自演-周杰伦</li>
+            <li>浪漫窝-弦子</li>
+            <li>流年-王菲</li>
+        </ul>
+    </div>
+    <script>
+        let list=document.getElementsByTagName('li')
+        let arrow=document.getElementsByTagName('i')[0]
+        let ul=document.getElementsByTagName('ul')[0]
+        let head=document.getElementsByClassName('head')[0]
+        let bool=true;
+        for(let i=0;i<list.length;i++){
+            list[i].addEventListener('mouseover',function(){
+                // for(var j=0;j<list.length;j++){
+                //     list[j].style.background=''
+                //     list[j].style.textDecoration=''
+                // }
+                this.style.background='#ccc'
+                this.style.textDecoration='underline'
+            })
+            list[i].addEventListener('mouseout',function(){
+                this.style.background=''
+                this.style.textDecoration=''
+            })
+        }
+        head.addEventListener('click',function(){
+            if(bool){
+                ul.style.display='none';
+                arrow.style.transform='rotate(180deg)'
+                bool=false;
+            }else{
+                ul.style.display='block';
+                arrow.style.transform='rotate(0deg)'
+                bool=true;
+            }
+        })
+    </script>
+</body>
+</html>

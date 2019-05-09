@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="https://s.taobao.com/search">
+            <input type="text" id="inp" name="search">
+            <button>提交</button>
+    </form>
+    <script>
+        let inp=document.getElementById('inp')
+        let btn=document.getElementsByTagName('button')[0]
+        inp.addEventListener('input',function(){
+            console.log();            
+        })
+        btn.addEventListener('click',function(){
+            submit(inp.value)
+        })
+    </script>
+</body>
+</html>
